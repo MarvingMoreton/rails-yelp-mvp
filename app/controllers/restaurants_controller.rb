@@ -10,7 +10,7 @@ class RestaurantsController < ApplicationController
   def create
     @restaurant = Restaurant.new(restaurant_params)
     # If creation is a success
-    if @restaurant.save!
+    if @restaurant.save
       redirect_to restaurant_path(@restaurant), notice: 'Restaurant was successfully created.'
       # If creation failed
     else
@@ -20,6 +20,7 @@ class RestaurantsController < ApplicationController
 
   def show
     @restaurant = Restaurant.find((params[:id]))
+    @review = Review.new
   end
 
   private
